@@ -11,3 +11,15 @@ body {
 h1 {
 	color: rgb(147, 156, 195);
 }
+
+#result {
+	background-color: rgb(193, 237, 245);
+}
+
+form {
+	position: relative;
+}
+
+#number {
+	border: 1px solid lightgrey;
+}

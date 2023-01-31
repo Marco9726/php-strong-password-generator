@@ -12,10 +12,51 @@
 
 <body>
 	<div class="container w-75 mt-5">
-		<div class="title text-center">
+		<div class="title text-center mb-3">
 			<h1>Strong password Generetor</h1>
 			<h2 class="text-white">Genera una password sicura</h2>
 		</div>
+		<div id="result" class="p-3 rounded-2 mb-3">
+			Nessun paramentro inserito
+		</div>
+		<form action="./index.php" class="rounded-3 bg-light p-3">
+			<div class="password d-flex align-items-center mb-3">
+				<div class="col-7">
+					Lunghezza password:
+				</div>
+				<div class="col-5">
+					<input type="number" id="number" class="p-1 rounded-2">
+				</div>
+			</div>
+
+			<div class="options d-flex">
+				<div class="col-7">
+					Consenti ripetizioni di uno o più caratteri:
+				</div>
+				<div class="col-5">
+					<div class="my-input">
+						<input type="radio" name="bool"> Si
+					</div>
+					<div class="my-input mb-3">
+						<input type="radio" name="bool"> No
+					</div>
+					<div class="my-input">
+						<input type="checkbox" name="bool"> Lettere
+					</div>
+					<div class="my-input">
+						<input type="checkbox" name="bool"> Numeri
+					</div>
+					<div class="my-input">
+						<input type="checkbox" name="bool"> Simboli
+					</div>
+				</div>
+			</div>
+			<div class="buttons my-3">
+				<input class="btn btn-primary" type="submit" value="Invia">
+				<input class="btn btn-secondary" type="reset" value="Annulla">
+			</div>
+		</form>
+
 	</div>
 </body>
 
