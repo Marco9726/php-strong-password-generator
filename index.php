@@ -1,3 +1,21 @@
+<?php
+
+function generateRandomPassword($length)
+{
+	$alphabet = 'abcdefghijklmnopqrstuvwyxz';
+	$numbers = '0123456789';
+	$symbols = '!?&%<>^+-*/()[]{}@#_=';
+}
+
+$error = '';
+if (isset($_GET['length_pwd']) && $_GET['length_pwd'] !== '') {
+	var_dump($_GET['length_pwd']);
+} else {
+	$error = 'non hai inserito un valore valido';
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,25 +28,28 @@
 	<title>Document</title>
 </head>
 
-<body>
+<body class="bg-white">
 	<div class="container w-75 mt-5">
 		<div class="title text-center mb-3">
 			<h1>Strong password Generetor</h1>
 			<h2 class="text-white">Genera una password sicura</h2>
 		</div>
-		<div id="result" class="p-3 rounded-2 mb-3">
+		<!-- <div id="result" class="p-3 rounded-2 mb-3">
 			Nessun paramentro inserito
-		</div>
-		<form action="./index.php" class="rounded-3 bg-light p-3">
+		</div> -->
+		<form action="./index.php" method="GET" class="rounded-3 bg-light p-3">
+			<?php if ($error != '') { ?>
+				<img src="https://media.tenor.com/hYVsWvkpdrMAAAAC/you-didnt-say-the-magic-word-ah-ah.gif" alt="non hai detto la parola magica">
+			<?php } ?>
 			<div class="password d-flex align-items-center mb-3">
 				<div class="col-7">
 					Lunghezza password:
 				</div>
 				<div class="col-5">
-					<input type="number" id="number" class="p-1 rounded-2">
+					<input type="number" name="length_pwd" id="number" class="p-1 rounded-2">
 				</div>
 			</div>
-
+			<!-- 
 			<div class="options d-flex">
 				<div class="col-7">
 					Consenti ripetizioni di uno o più caratteri:
@@ -50,10 +71,10 @@
 						<input type="checkbox" name="bool"> Simboli
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<div class="buttons my-3">
-				<input class="btn btn-primary" type="submit" value="Invia">
-				<input class="btn btn-secondary" type="reset" value="Annulla">
+				<button class="btn btn-primary" type="submit">Genera </button>
+				<!-- <input class="btn btn-secondary" type="reset" value="Annulla"> -->
 			</div>
 		</form>
 
