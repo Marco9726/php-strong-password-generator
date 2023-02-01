@@ -7,11 +7,16 @@ function generateRandomPassword($length)
 	$symbols = '!?&%<>^+-*/()[]{}@#_=';
 }
 
-$error = '';
-if (isset($_GET['length_pwd']) && $_GET['length_pwd'] !== '') {
-	var_dump($_GET['length_pwd']);
+$length_pwd = '';
+if (isset($_GET['length_pwd'])) {
+	$length_pwd = $_GET['length_pwd'];
+}
+
+$error = false;
+if (isset($length_pwd) && $length_pwd !== '') {
+	var_dump($length_pwd);
 } else {
-	$error = 'non hai inserito un valore valido';
+	$error = true;
 }
 ?>
 
@@ -38,8 +43,9 @@ if (isset($_GET['length_pwd']) && $_GET['length_pwd'] !== '') {
 			Nessun paramentro inserito
 		</div> -->
 		<form action="./index.php" method="GET" class="rounded-3 bg-light p-3">
-			<?php if ($error != '') { ?>
+			<?php if ($error) { ?>
 				<img src="https://media.tenor.com/hYVsWvkpdrMAAAAC/you-didnt-say-the-magic-word-ah-ah.gif" alt="non hai detto la parola magica">
+				<h2 class="text-danger">AH AH AH! DEVI INSERIRE UN VALORE CORRETTO</h2>
 			<?php } ?>
 			<div class="password d-flex align-items-center mb-3">
 				<div class="col-7">
