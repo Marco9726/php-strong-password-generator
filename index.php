@@ -5,6 +5,16 @@ function generateRandomPassword($length)
 	$alphabet = 'abcdefghijklmnopqrstuvwyxz';
 	$numbers = '0123456789';
 	$symbols = '!?&%<>^+-*/()[]{}@#_=';
+	$password = '';
+
+	// finchè la lunghezza della password è inferiore al valore scelto 
+	while (strlen($password) < $length) {
+		// genero un carattere casuale dalla stringa 'alphabet', dalla posizione 0 finno alla sua lunghezza -1 
+		$randomChar = $alphabet[rand(0, strlen($alphabet) - 1)];
+		// assegno tale carattere alla password 
+		$password .= $randomChar;
+	}
+	return $password;
 }
 
 $length_pwd = '';
@@ -13,10 +23,10 @@ if (isset($_GET['length_pwd'])) {
 }
 
 $error = false;
-if (isset($length_pwd) && $length_pwd !== '') {
-	var_dump($length_pwd);
-} else {
+if ($length_pwd < 8 || $length_pwd > 32) {
 	$error = true;
+} else {
+	$password = generateRandomPassword($length_pwd);
 }
 ?>
 
@@ -39,14 +49,16 @@ if (isset($length_pwd) && $length_pwd !== '') {
 			<h1>Strong password Generetor</h1>
 			<h2 class="text-white">Genera una password sicura</h2>
 		</div>
-		<!-- <div id="result" class="p-3 rounded-2 mb-3">
-			Nessun paramentro inserito
-		</div> -->
 		<form action="./index.php" method="GET" class="rounded-3 bg-light p-3">
+			<!-- se errore = true, mostro a schermo l'errore  -->
 			<?php if ($error) { ?>
 				<img src="https://media.tenor.com/hYVsWvkpdrMAAAAC/you-didnt-say-the-magic-word-ah-ah.gif" alt="non hai detto la parola magica">
-				<h2 class="text-danger">AH AH AH! DEVI INSERIRE UN VALORE CORRETTO</h2>
-			<?php } ?>
+				<h2 class="text-danger">AH AH AH! La lunghezza della password deve essere compresa tra 8 e 32</h2>
+				<!-- altrimenti, mostro la password  -->
+			<?php } else {
+				echo '<h2> La tua password è:' . $password . '</h2>';
+			} ?>
+
 			<div class="password d-flex align-items-center mb-3">
 				<div class="col-7">
 					Lunghezza password:
