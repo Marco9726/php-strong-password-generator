@@ -1,10 +1,3 @@
-<?php
-
-include __DIR__ . '/functions.php';
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,15 +16,7 @@ include __DIR__ . '/functions.php';
 			<h1>Strong password Generetor</h1>
 			<h2 class="text-white">Genera una password sicura</h2>
 		</div>
-		<form action="./index.php" method="GET" class="rounded-3 bg-light p-3">
-			<!-- se errore = true, mostro a schermo l'errore  -->
-			<?php if ($error) { ?>
-				<img src="https://media.tenor.com/hYVsWvkpdrMAAAAC/you-didnt-say-the-magic-word-ah-ah.gif" alt="non hai detto la parola magica">
-				<h2 class="text-danger">AH AH AH! La lunghezza della password deve essere compresa tra 8 e 32</h2>
-				<!-- altrimenti, mostro la password  -->
-			<?php } else {
-				echo 'La tua password è: <strong>' . $password . '</strong>';
-			} ?>
+		<form action="./dashboard.php" method="GET" class="rounded-3 bg-light p-3">
 			<div class="password d-flex align-items-center mb-3">
 				<div class="col-7">
 					Lunghezza password:

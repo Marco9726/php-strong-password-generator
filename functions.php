@@ -23,8 +23,3 @@ if (isset($_GET['length_pwd'])) {
 }
 
 $error = false;
-if ($length_pwd < 8 || $length_pwd > 32) {
-	$error = true;
-} else {
-	$password = generateRandomPassword($length_pwd);
-}
