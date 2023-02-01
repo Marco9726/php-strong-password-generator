@@ -1,33 +1,7 @@
 <?php
 
-function generateRandomPassword($length)
-{
-	$alphabet = 'abcdefghijklmnopqrstuvwyxz';
-	$numbers = '0123456789';
-	$symbols = '!?&%<>^+-*/()[]{}@#_=';
-	$password = '';
+include __DIR__ . '/functions.php';
 
-	// finchè la lunghezza della password è inferiore al valore scelto 
-	while (strlen($password) < $length) {
-		// genero un carattere casuale dalla stringa 'alphabet', dalla posizione 0 finno alla sua lunghezza -1 
-		$randomChar = $alphabet[rand(0, strlen($alphabet) - 1)];
-		// assegno tale carattere alla password 
-		$password .= $randomChar;
-	}
-	return $password;
-}
-
-$length_pwd = '';
-if (isset($_GET['length_pwd'])) {
-	$length_pwd = $_GET['length_pwd'];
-}
-
-$error = false;
-if ($length_pwd < 8 || $length_pwd > 32) {
-	$error = true;
-} else {
-	$password = generateRandomPassword($length_pwd);
-}
 ?>
 
 
@@ -56,9 +30,8 @@ if ($length_pwd < 8 || $length_pwd > 32) {
 				<h2 class="text-danger">AH AH AH! La lunghezza della password deve essere compresa tra 8 e 32</h2>
 				<!-- altrimenti, mostro la password  -->
 			<?php } else {
-				echo '<h2> La tua password è:' . $password . '</h2>';
+				echo 'La tua password è: <strong>' . $password . '</strong>';
 			} ?>
-
 			<div class="password d-flex align-items-center mb-3">
 				<div class="col-7">
 					Lunghezza password:
